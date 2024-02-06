@@ -34,9 +34,9 @@
                 <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" Height="905" Width="1738"/>
             </DockPanel>
         </TabItem>
-        <TabItem>
+        <TabItem Header="Мелодии">
             <DockPanel>
-                <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" Height="905" Width="1738"/>
+                <pages:GetInMelodyControll DockPanel.Dock="Bottom" DataContext="{Binding _getInMelodyViewModel}" Height="905" Width="1738"/>
             </DockPanel>
         </TabItem>
     </TabControl>

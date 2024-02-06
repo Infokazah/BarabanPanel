@@ -1,0 +1,55 @@
+﻿{
+  "Melodies": [
+    {
+      "Name": "Melody1",
+      "BarabanParts": [
+        {
+          "BarabanNumber": "1",
+          "BarabanTaiming": "0:0:1"
+        },
+        {
+          "BarabanNumber": "2",
+          "BarabanTaiming": "0:0:2"
+        },
+        {
+          "BarabanNumber": "3",
+          "BarabanTaiming": "0:0:3"
+        }
+      ]
+    },
+    {
+      "Name": "Melody2",
+      "BarabanParts": [
+        {
+          "BarabanNumber": "3",
+          "BarabanTaiming": "0:0:1"
+        },
+        {
+          "BarabanNumber": "4",
+          "BarabanTaiming": "0:0:1.4"
+        }
+      ]
+    },
+    {
+      "Name": "Melody3",
+      "BarabanParts": [
+        {
+          "BarabanNumber": "2",
+          "BarabanTaiming": "0:0:1"
+        },
+        {
+          "BarabanNumber": "1",
+          "BarabanTaiming": "0:0:3"
+        },
+        {
+          "BarabanNumber": "4",
+          "BarabanTaiming": "0:0:5"
+        },
+        {
+          "BarabanNumber": "2",
+          "BarabanTaiming": "0:0:7"
+        }
+      ]
+    }
+  ]
+}

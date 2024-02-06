@@ -1,0 +1,30 @@
+﻿{
+  "Melodies": [
+    {
+      "Name": "Melody1",
+      "BarabanParts": [
+        {
+          "BarabanNumber": "1",
+          "BarabanTaiming": "0:0:1"
+        },
+        {
+          "BarabanNumber": "2",
+          "BarabanTaiming": "0:0:2"
+        }
+      ]
+    },
+    {
+      "Name": "Melody2",
+      "BarabanParts": [
+        {
+          "BarabanNumber": "3",
+          "BarabanTaiming": "0:0:1"
+        },
+        {
+          "BarabanNumber": "4",
+          "BarabanTaiming": "0:0:1.4"
+        }
+      ]
+    }
+  ]
+}
