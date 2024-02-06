@@ -12,12 +12,14 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="15*"/>
-                </Grid.RowDefinitions>
+                    <RowDefinition/>
+        </Grid.RowDefinitions>
                 <ProgressBar Width="120" Height="16" Value="{Binding CurrentTime}" Maximum="3"/>
                 <Ellipse Fill="Gray" Grid.Row="1">
                     <Ellipse.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding CheckTime}"/>
                     </Ellipse.InputBindings>
                 </Ellipse>
-            </Grid>
+        <Button Name="StartButton" Grid.Row="2" Content="Start" FontSize="24" Command="{Binding StartCommand}" Click="StartButton_Click"/>
+    </Grid>
         </UserControl>

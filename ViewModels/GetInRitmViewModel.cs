@@ -14,32 +14,46 @@ namespace BarabanPanel.ViewModels
 {
     internal class GetInRitmViewModel : ViewModelBase
     {
-        private bool _inRitm = true;
+        private bool _inRitm = false;
         private ViewModelMainWindow _MainViewModel { get; }
 
         private DateTime lastClickTime;
+
+        public CommandBase StartCommand { get; }
+        private bool CanStartExecute(object p) => true;
+
+        private void StartExecute(object filePath)
+        {
+            _inRitm = !_inRitm;
+            lastClickTime = DateTime.Now;
+            UpdateTimeAsync();
+        }
+
         public CommandBase CheckTime { get; }
         private bool CanCheckTimeExecute(object p) => true;
 
         private void CheckTimeExecute(object filePath)
         {
-
-            TimeSpan elapsedTime = DateTime.Now - lastClickTime;
+            if(_inRitm == true)
+            {
+                TimeSpan elapsedTime = DateTime.Now - lastClickTime;
 
             if (elapsedTime.TotalSeconds > 4 || elapsedTime.TotalSeconds < 3)
             {
                 MessageBox.Show("Ты не попал в тайминг");
+                _inRitm = false;
                 lastClickTime = DateTime.Now;
             }
             else
             {
-                MessageBox.Show("Красава чувствуешь");
                 lastClickTime = DateTime.Now;
             }
+            }
+            
         }
         private async Task UpdateTimeAsync()
         {
-            while (_inRitm = true) 
+            while (_inRitm == true) 
             {
                 TimeSpan elapsedTime = DateTime.Now - lastClickTime;
                 CurrentTime = elapsedTime.TotalSeconds;
@@ -67,14 +81,13 @@ namespace BarabanPanel.ViewModels
         {
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
             CurrentTime = 30;
-            UpdateTimeAsync();
         }
         public GetInRitmViewModel(ViewModelMainWindow MainModel) 
         {
             _MainViewModel = MainModel;
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
+            StartCommand = new RegularCommand(StartExecute, CanStartExecute);
             CurrentTime = 0;
-            UpdateTimeAsync();
         }
         
     }
