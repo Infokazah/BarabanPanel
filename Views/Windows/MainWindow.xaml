@@ -34,5 +34,10 @@
                 <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" Height="905" Width="1738"/>
             </DockPanel>
         </TabItem>
+        <TabItem>
+            <DockPanel>
+                <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" Height="905" Width="1738"/>
+            </DockPanel>
+        </TabItem>
     </TabControl>
 </Window>

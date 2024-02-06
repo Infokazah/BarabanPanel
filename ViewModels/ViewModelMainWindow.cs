@@ -14,22 +14,10 @@ namespace BarabanPanel.ViewModels
     internal class ViewModelMainWindow : ViewModelBase
     {
         public GetInRitmViewModel _getInRitmViewModel { get; }
+        public GetInMelodyViewModel _getInMelodyViewModel { get; }
 
         private bool _isLooping = false;
 
-        public CommandBase ToggleLoop { get; }
-
-        private bool CanToggleLoopExecute(object p) => true;
-
-        private void ToggleLoopExecute(object parameter)
-        {
-            _isLooping = !_isLooping;
-
-            if (_isLooping)
-            {
-                Task.Run(() => LoopSound());
-            }
-        }
 
         private void LoopSound()
         {
@@ -43,6 +31,21 @@ namespace BarabanPanel.ViewModels
                 {
                     MessageBox.Show("Ошибка воспроизведения звука: " + ex.Message);
                 }
+            }
+        }
+        #region Комманды
+
+        public CommandBase ToggleLoop { get; }
+
+        private bool CanToggleLoopExecute(object p) => true;
+
+        private void ToggleLoopExecute(object parameter)
+        {
+            _isLooping = !_isLooping;
+
+            if (_isLooping)
+            {
+                Task.Run(() => LoopSound());
             }
         }
 
@@ -65,9 +68,11 @@ namespace BarabanPanel.ViewModels
                 }
             }
         }
+        #endregion
         public ViewModelMainWindow() 
         {
             _getInRitmViewModel = new GetInRitmViewModel(this);
+            _getInMelodyViewModel = new GetInMelodyViewModel(this); 
             _soundPlayer = new SoundPlayer();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
             ToggleLoop = new RegularCommand(ToggleLoopExecute, CanToggleLoopExecute);

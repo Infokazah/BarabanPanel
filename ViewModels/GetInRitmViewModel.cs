@@ -14,17 +14,63 @@ namespace BarabanPanel.ViewModels
 {
     internal class GetInRitmViewModel : ViewModelBase
     {
+        #region Атрибуты
         private bool _inRitm = false;
         private ViewModelMainWindow _MainViewModel { get; }
 
         private DateTime lastClickTime;
 
+        private double _currentTime;
+
+        public double CurrentTime
+        {
+            get
+            {
+                return _currentTime;
+            }
+            set
+            {
+                _currentTime = value;
+                OnPropertyChanged(nameof(CurrentTime));
+            }
+        }
+
+        private string _currentText = "Start";
+
+        public string CurrentText
+        {
+            get
+            {
+                return _currentText;
+            }
+            set
+            {
+                _currentText = value;
+                OnPropertyChanged(nameof(CurrentText));
+            }
+        }
+        #endregion
+        //асинхронный таймер
+        private async Task UpdateTimeAsync()
+        {
+            while (_inRitm == true)
+            {
+                TimeSpan elapsedTime = DateTime.Now - lastClickTime;
+                CurrentTime = elapsedTime.TotalSeconds;
+                await Task.Delay(1);
+            }
+
+        }
+        
+
+        #region Комманды
         public CommandBase StartCommand { get; }
         private bool CanStartExecute(object p) => true;
 
         private void StartExecute(object filePath)
         {
             _inRitm = !_inRitm;
+            CurrentText = "End";
             lastClickTime = DateTime.Now;
             UpdateTimeAsync();
         }
@@ -42,6 +88,7 @@ namespace BarabanPanel.ViewModels
             {
                 MessageBox.Show("Ты не попал в тайминг");
                 _inRitm = false;
+                CurrentText = "Start";
                 lastClickTime = DateTime.Now;
             }
             else
@@ -51,36 +98,11 @@ namespace BarabanPanel.ViewModels
             }
             
         }
-        private async Task UpdateTimeAsync()
-        {
-            while (_inRitm == true) 
-            {
-                TimeSpan elapsedTime = DateTime.Now - lastClickTime;
-                CurrentTime = elapsedTime.TotalSeconds;
-                await Task.Delay(1);
-            }
-            
-        }
-
-        private double _currentTime;
-
-        public double CurrentTime
-        {
-            get
-            {
-                return _currentTime;
-            }
-            set
-            {
-                _currentTime = value;
-                OnPropertyChanged(nameof(CurrentTime));
-            }
-        }
+        #endregion
 
         public GetInRitmViewModel() : this(null)
         {
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
-            CurrentTime = 30;
         }
         public GetInRitmViewModel(ViewModelMainWindow MainModel) 
         {

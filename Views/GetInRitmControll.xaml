@@ -20,6 +20,7 @@
                         <MouseBinding Gesture="LeftClick" Command="{Binding CheckTime}"/>
                     </Ellipse.InputBindings>
                 </Ellipse>
-        <Button Name="StartButton" Grid.Row="2" Content="Start" FontSize="24" Command="{Binding StartCommand}" Click="StartButton_Click"/>
+        <Button Name="StartButton" Grid.Row="2" Content="{Binding CurrentText}" 
+                FontSize="24" Command="{Binding StartCommand}" />
     </Grid>
         </UserControl>
