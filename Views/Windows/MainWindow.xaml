@@ -10,9 +10,15 @@
     <Window.DataContext>
         <vm:ViewModelMainWindow/>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Q" Command="{Binding MakeSound}" CommandParameter="1" />
+        <KeyBinding Key="W" Command="{Binding MakeSound}" CommandParameter="2" />
+        <KeyBinding Key="E" Command="{Binding MakeSound}" CommandParameter="3" />
+        <KeyBinding Key="R" Command="{Binding MakeSound}" CommandParameter="4" />
+    </Window.InputBindings>
 
-    <TabControl>
-        <TabItem Header="Барабанная панель">
+    <TabControl Background="#FF060505">
+        <TabItem Header="Барабанная панель" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -23,10 +29,10 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Ellipse Fill="Gray" Grid.Column="0" Grid.Row="0" />
-                <Ellipse Fill="Gray" Grid.Column="0" Grid.Row="1"/>
-                <Ellipse Fill="Yellow" Grid.Column="2" Grid.Row="0"/>
-                <Ellipse Fill="Gray" Grid.Column="2" Grid.Row="1"/>
+                <Button Grid.Row="0" Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="1"/>
+                <Button Grid.Row="0" Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="2"/>
+                <Button Grid.Row="1" Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="3"/>
+                <Button Grid.Row="1" Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="4"/>
             </Grid>
         </TabItem>
         <TabItem Header="Попадание в ритм">
