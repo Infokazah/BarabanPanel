@@ -9,6 +9,6 @@ namespace BarabanPanel.Models
     public class PartOfMelody
     {
         public string BarabanNumber { get; set; }
-        public TimeSpan BarabanTaiming { get; set; }
+        public double BarabanTaiming { get; set; }
     }
 }

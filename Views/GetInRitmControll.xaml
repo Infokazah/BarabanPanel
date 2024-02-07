@@ -8,19 +8,23 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance vm:GetInRitmViewModel, d:IsDesignTimeCreatable=True}"
             d:DesignHeight="1000" d:DesignWidth="1900">
+    <UserControl.InputBindings>
+        <KeyBinding Key="R" Command="{Binding CheckTime}" />
+    </UserControl.InputBindings>
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="15*"/>
                     <RowDefinition/>
         </Grid.RowDefinitions>
-                <ProgressBar Width="120" Height="16" Value="{Binding CurrentTime}" Maximum="3"/>
-                <Ellipse Fill="Gray" Grid.Row="1">
-                    <Ellipse.InputBindings>
-                        <MouseBinding Gesture="LeftClick" Command="{Binding CheckTime}"/>
-                    </Ellipse.InputBindings>
-                </Ellipse>
-        <Button Name="StartButton" Grid.Row="2" Content="{Binding CurrentText}" 
-                FontSize="24" Command="{Binding StartCommand}" />
+                <ProgressBar Width="120" Height="16" Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}"/>
+        <Button Grid.Row="1" Command="{Binding CheckTime}" />
+
+        <DockPanel  Grid.Row="2" >
+            <Button Content="{Binding CurrentText}"  DockPanel.Dock="Left"
+                FontSize="24" Command="{Binding StartCommand}" Width="925"/>
+            <TextBox Text="{Binding CurrentTemp}"/>
+        </DockPanel>
+        
     </Grid>
         </UserControl>

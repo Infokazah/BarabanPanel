@@ -32,7 +32,7 @@ namespace BarabanPanel.Views
             viewModel = (GetInMelodyViewModel)DataContext;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (viewModel != null && viewModel.CurrentMelody != null)
             {
@@ -72,6 +72,6 @@ namespace BarabanPanel.Views
             {
                 MessageBox.Show("ViewModel или Melody не инициализированы.");
             }
-        }
+        }*/
     }
 }

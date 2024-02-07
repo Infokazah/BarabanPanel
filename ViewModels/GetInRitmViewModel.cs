@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using BarabanPanel.Views;
 using System.Windows;
 using BarabanPanel.Infrastructure.Commands;
+using System.IO;
 
 namespace BarabanPanel.ViewModels
 {
@@ -18,7 +19,29 @@ namespace BarabanPanel.ViewModels
         private bool _inRitm = false;
         private ViewModelMainWindow _MainViewModel { get; }
 
+        
+
+        private SoundPlayer _ritmSoundPlayer;
+
+        private SoundPlayer _barabanSoundPlayer;
+
         private DateTime lastClickTime;
+
+
+        private double _currentTemp = 1;
+        public double CurrentTemp
+        {
+            get
+            {
+                return _currentTemp;
+            }
+            set
+            {
+                if(value>0.3 && value<5)
+                    _currentTemp = value;
+                OnPropertyChanged(nameof(CurrentTemp));
+            }
+        }
 
         private double _currentTime;
 
@@ -70,7 +93,15 @@ namespace BarabanPanel.ViewModels
         private void StartExecute(object filePath)
         {
             _inRitm = !_inRitm;
-            CurrentText = "End";
+            if(_inRitm)
+            {
+                CurrentText = "End";
+            }
+            else
+            {
+                CurrentText = "Start";
+            }
+            
             lastClickTime = DateTime.Now;
             UpdateTimeAsync();
         }
@@ -80,11 +111,12 @@ namespace BarabanPanel.ViewModels
 
         private void CheckTimeExecute(object filePath)
         {
+            _barabanSoundPlayer.Play();
             if(_inRitm == true)
             {
                 TimeSpan elapsedTime = DateTime.Now - lastClickTime;
 
-            if (elapsedTime.TotalSeconds > 4 || elapsedTime.TotalSeconds < 3)
+            if (elapsedTime.TotalSeconds > CurrentTemp + 0.1 || elapsedTime.TotalSeconds < CurrentTemp - 0.1)
             {
                 MessageBox.Show("Ты не попал в тайминг");
                 _inRitm = false;
@@ -110,7 +142,8 @@ namespace BarabanPanel.ViewModels
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
             StartCommand = new RegularCommand(StartExecute, CanStartExecute);
             CurrentTime = 0;
+            _ritmSoundPlayer = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), "GetInRitm.wav"));
+            _barabanSoundPlayer = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), "GetInRitmBar.wav"));
         }
-        
     }
 }
