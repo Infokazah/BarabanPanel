@@ -116,7 +116,7 @@ namespace BarabanPanel.ViewModels
             {
                 TimeSpan elapsedTime = DateTime.Now - lastClickTime;
 
-            if (elapsedTime.TotalSeconds > CurrentTemp + 0.1 || elapsedTime.TotalSeconds < CurrentTemp - 0.1)
+            if (elapsedTime.TotalSeconds > CurrentTemp + 0.05 || elapsedTime.TotalSeconds < CurrentTemp - 0.05)
             {
                 MessageBox.Show("Ты не попал в тайминг");
                 _inRitm = false;

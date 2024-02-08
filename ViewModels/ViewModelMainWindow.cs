@@ -3,6 +3,7 @@ using BarabanPanel.Infrastructure.Commands.Base;
 using BarabanPanel.ViewModel.Base;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -15,6 +16,8 @@ namespace BarabanPanel.ViewModels
     {
         public GetInRitmViewModel _getInRitmViewModel { get; }
         public GetInMelodyViewModel _getInMelodyViewModel { get; }
+
+        private string _directory = Directory.GetCurrentDirectory();
 
         private bool _isLooping = false;
 
@@ -59,7 +62,7 @@ namespace BarabanPanel.ViewModels
             {
                 try
                 {
-                    _soundPlayer.SoundLocation=path;
+                    _soundPlayer.SoundLocation=Path.Combine(_directory,path + ".wav");
                     _soundPlayer.Play();
                 }
                 catch (Exception ex)

@@ -5,7 +5,9 @@ using BarabanPanel.Services;
 using BarabanPanel.ViewModel.Base;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,8 +17,9 @@ namespace BarabanPanel.ViewModels
     class GetInMelodyViewModel : ViewModelBase
     {
         private ViewModelMainWindow _MainViewModel;
-
+        private SoundPlayer _soundPlayer;
         private JsonReader _reader;
+        private string _directory = Directory.GetCurrentDirectory();
 
         #region Атрибуты мдля мелодии
 
@@ -119,6 +122,9 @@ namespace BarabanPanel.ViewModels
         {
             if (barabanName != null)
             {
+
+                _soundPlayer.SoundLocation = Path.Combine(_directory,barabanName.ToString() + ".wav");
+                _soundPlayer.Play();
                 if(barabanName.ToString() == _barabanName)
                 {
                     TimeSpan elapsedTime = DateTime.Now - lastClickTime;
@@ -164,7 +170,6 @@ namespace BarabanPanel.ViewModels
             {
                 CurrentTemp = CurrentMelody.BarabanParts[_barabanParamNumber].BarabanTaiming;
                 _barabanName = CurrentMelody.BarabanParts[_barabanParamNumber].BarabanNumber;
-                MessageBox.Show(CurrentTemp.ToString());
                 _barabanParamNumber++;
             }
             else
@@ -185,6 +190,7 @@ namespace BarabanPanel.ViewModels
         {
             _MainViewModel = MainModel;
             _reader= new JsonReader();
+            _soundPlayer = new SoundPlayer();
             Melodies = _reader.GetDictionaryNames();
             StartMelody = new RegularCommand(StartMelodyExecute, CanStartMelodyExecute);
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
