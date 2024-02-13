@@ -81,7 +81,18 @@ namespace BarabanPanel.ViewModels
         #region Процесс проигрыша мелодии
 
         private string _barabanName;
+        public string BarabanName
+        {
+            get => _barabanName;
+
+            set
+            {
+                _barabanName = value;
+                OnPropertyChanged(nameof(BarabanName));
+            }
+        }
         private int _barabanParamNumber = 0;
+
         private DateTime lastClickTime;
 
         private bool _inRitm = false;
@@ -125,11 +136,11 @@ namespace BarabanPanel.ViewModels
 
                 _soundPlayer.SoundLocation = Path.Combine(_directory,barabanName.ToString() + ".wav");
                 _soundPlayer.Play();
-                if(barabanName.ToString() == _barabanName)
+                if(barabanName.ToString() == BarabanName)
                 {
                     TimeSpan elapsedTime = DateTime.Now - lastClickTime;
 
-                    if (elapsedTime.TotalSeconds > _currentTemp + 0.5 || elapsedTime.TotalSeconds < _currentTemp - 0.5)
+                    if (elapsedTime.TotalSeconds > _currentTemp + 0.1 || elapsedTime.TotalSeconds < _currentTemp - 0.1)
                     {
                         MessageBox.Show("Ты не попал в тайминг");
                         _inRitm = false;
@@ -169,7 +180,7 @@ namespace BarabanPanel.ViewModels
             if(_barabanParamNumber <= CurrentMelody.BarabanParts.Count -1)
             {
                 CurrentTemp = CurrentMelody.BarabanParts[_barabanParamNumber].BarabanTaiming;
-                _barabanName = CurrentMelody.BarabanParts[_barabanParamNumber].BarabanNumber;
+                BarabanName = CurrentMelody.BarabanParts[_barabanParamNumber].BarabanNumber;
                 _barabanParamNumber++;
             }
             else
@@ -194,6 +205,7 @@ namespace BarabanPanel.ViewModels
             Melodies = _reader.GetDictionaryNames();
             StartMelody = new RegularCommand(StartMelodyExecute, CanStartMelodyExecute);
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
+            BarabanName = "0";
         }
     }
 }

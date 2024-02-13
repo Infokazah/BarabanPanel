@@ -13,31 +13,82 @@
         <KeyBinding Key="W" Command="{Binding CheckTime}" CommandParameter="2" />
         <KeyBinding Key="E" Command="{Binding CheckTime}" CommandParameter="3" />
         <KeyBinding Key="R" Command="{Binding CheckTime}" CommandParameter="4" />
+        <KeyBinding Key="I" Command="{Binding CheckTime}" CommandParameter="5" />
+        <KeyBinding Key="O" Command="{Binding CheckTime}" CommandParameter="6" />
+        <KeyBinding Key="P" Command="{Binding CheckTime}" CommandParameter="7" />
     </UserControl.InputBindings>
+    <UserControl.Resources>
+        <Style x:Key="TransparentButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition />
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="8*"/>
+
         </Grid.RowDefinitions>
-        <ProgressBar  Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" Background="Black" Foreground="#FFE60A0A"/>
-        
-        <Button Grid.Row="1" Grid.Column="0" Command="{Binding CheckTime}" CommandParameter="1"/>
-        <Button Grid.Row="1" Grid.Column="1" Command="{Binding CheckTime}" CommandParameter="2"/>
-        <Button Grid.Row="2" Grid.Column="0" Command="{Binding CheckTime}" CommandParameter="3"/>
-        <Button Grid.Row="2" Grid.Column="1" Command="{Binding CheckTime}" CommandParameter="4"/>
-        
-        <DockPanel Grid.Column="1" Grid.Row="0">
-            <ComboBox ItemsSource="{Binding Melodies}" Height="50" SelectedItem="{Binding MelodyName}" DockPanel.Dock="Top"/>
+        <ProgressBar  Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" Background="Gray" Foreground="#FFCACACA" Grid.Column="0" Grid.Row="0"/>
+
+        <Grid HorizontalAlignment="Left" Margin="0,111,0,0" Grid.RowSpan="2" Width="1744" Grid.ColumnSpan="2">
+            <Grid.Background>
+                <ImageBrush ImageSource="D:\Codes\BarabanPanel\bin\Debug\net7.0-windows\back.jpg" Opacity="1"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding CheckTime}" CommandParameter="1" Style="{StaticResource TransparentButtonStyle}" Margin="270,294,0,0"/>
+            <Button Grid.Column="1" Command="{Binding CheckTime}" CommandParameter="2" Style="{StaticResource TransparentButtonStyle}" Margin="120,36,104,222" Grid.Row="1"/>
+            <Button Grid.Row="0" Grid.Column="2" Command="{Binding CheckTime}" CommandParameter="3" Style="{StaticResource TransparentButtonStyle}" Margin="0,294,204,0"/>
+            <Button Grid.Column="2" Command="{Binding CheckTime}" CommandParameter="4" Style="{StaticResource TransparentButtonStyle}" Margin="137,66,42,201" Grid.Row="1" Cursor="Hand"/>
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding CheckTime}" CommandParameter="5" Style="{StaticResource TransparentButtonStyle}" Grid.ColumnSpan="2" Margin="361,78,297,219"/>
+            <Button Grid.Column="0" Command="{Binding CheckTime}" CommandParameter="6" Style="{StaticResource TransparentButtonStyle}" Margin="297,384,397,290" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Button Grid.Row="0" Grid.Column="2" Command="{Binding CheckTime}" CommandParameter="7" Style="{StaticResource TransparentButtonStyle}" Margin="437,267,177,365" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        </Grid>
+
+        <DockPanel Grid.Column="1" Grid.Row="0" >
+            <ComboBox ItemsSource="{Binding Melodies}" Height="50" SelectedItem="{Binding MelodyName}" DockPanel.Dock="Top" FontSize="28" Background="White"/>
             <Button Content="Start" FontSize="24" 
                     Command="{Binding StartMelody}"  
-                    DockPanel.Dock="Bottom" Height="50"/>
+                    DockPanel.Dock="Bottom" 
+                    Background="White"/>
         </DockPanel>
-        
+        <Border  Grid.Row="0" Grid.Column="2" Background="Black" >
+            <TextBlock Background="White" Text="{Binding BarabanName}" FontSize="64" TextAlignment="Center" Margin="1"/>
+        </Border>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Background="White">
+        </StackPanel>
     </Grid>
 </UserControl>

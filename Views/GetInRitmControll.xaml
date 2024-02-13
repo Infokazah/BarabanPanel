@@ -17,13 +17,17 @@
                     <RowDefinition Height="15*"/>
                     <RowDefinition/>
         </Grid.RowDefinitions>
-        <ProgressBar Width="120" Height="16" Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" Background="#FF2BFF00" Foreground="#FFB7050D" />
+        <ProgressBar Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" Background="Gray" Foreground="#FFCACACA" />
         <Button Grid.Row="1" Command="{Binding CheckTime}" />
 
         <DockPanel  Grid.Row="2" >
             <Button Content="{Binding CurrentText}"  DockPanel.Dock="Left"
                 FontSize="24" Command="{Binding StartCommand}" Width="925"/>
-            <TextBox Text="{Binding CurrentTemp}"/>
+            <StackPanel Orientation="Horizontal" Background="White">
+                <TextBlock Text="Введите частоту такта: " Background="White" FontSize="44" />
+                <TextBox Text="{Binding CurrentTemp}" FontSize="44" Width="60" HorizontalAlignment="Center" TextAlignment="Center"/>
+            </StackPanel>
+            
         </DockPanel>
         
     </Grid>

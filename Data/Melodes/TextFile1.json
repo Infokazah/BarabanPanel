@@ -5,15 +5,15 @@
       "BarabanParts": [
         {
           "BarabanNumber": "1",
-          "BarabanTaiming": "0:0:1"
+          "BarabanTaiming": "1"
         },
         {
           "BarabanNumber": "2",
-          "BarabanTaiming": "0:0:2"
+          "BarabanTaiming": "2"
         },
         {
           "BarabanNumber": "3",
-          "BarabanTaiming": "0:0:3"
+          "BarabanTaiming": "3"
         }
       ]
     },
@@ -22,11 +22,11 @@
       "BarabanParts": [
         {
           "BarabanNumber": "3",
-          "BarabanTaiming": "0:0:1"
+          "BarabanTaiming": "1"
         },
         {
           "BarabanNumber": "4",
-          "BarabanTaiming": "0:0:1.4"
+          "BarabanTaiming": "4"
         }
       ]
     },
@@ -35,19 +35,19 @@
       "BarabanParts": [
         {
           "BarabanNumber": "2",
-          "BarabanTaiming": "0:0:1"
+          "BarabanTaiming": "1"
         },
         {
           "BarabanNumber": "1",
-          "BarabanTaiming": "0:0:3"
+          "BarabanTaiming": "3"
         },
         {
           "BarabanNumber": "4",
-          "BarabanTaiming": "0:0:5"
+          "BarabanTaiming": "5"
         },
         {
           "BarabanNumber": "2",
-          "BarabanTaiming": "0:0:7"
+          "BarabanTaiming": "7"
         }
       ]
     }

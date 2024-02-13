@@ -1,5 +1,6 @@
 ﻿using BarabanPanel.Infrastructure.Commands;
 using BarabanPanel.Infrastructure.Commands.Base;
+using BarabanPanel.Models;
 using BarabanPanel.ViewModel.Base;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace BarabanPanel.ViewModels
             {
                 try
                 {
-                    _soundPlayer.PlayLooping();
+                    //_soundPlayer.PlayLooping();
                 }
                 catch (Exception ex)
                 {
@@ -52,7 +53,7 @@ namespace BarabanPanel.ViewModels
             }
         }
 
-        private SoundPlayer _soundPlayer;
+        private SoundManager _soundPlayer;
         public CommandBase MakeSound { get; }
         private bool CanMakeSoundExecute(object p) => true;
 
@@ -62,8 +63,8 @@ namespace BarabanPanel.ViewModels
             {
                 try
                 {
-                    _soundPlayer.SoundLocation=Path.Combine(_directory,path + ".wav");
-                    _soundPlayer.Play();
+                    string soundPath = Path.Combine(_directory, path + ".wav");
+                    _soundPlayer.PlaySoundAsync(soundPath);
                 }
                 catch (Exception ex)
                 {
@@ -76,7 +77,7 @@ namespace BarabanPanel.ViewModels
         {
             _getInRitmViewModel = new GetInRitmViewModel(this);
             _getInMelodyViewModel = new GetInMelodyViewModel(this); 
-            _soundPlayer = new SoundPlayer();
+            _soundPlayer = new SoundManager();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
             ToggleLoop = new RegularCommand(ToggleLoopExecute, CanToggleLoopExecute);
         }

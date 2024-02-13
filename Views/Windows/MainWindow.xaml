@@ -10,17 +10,48 @@
     <Window.DataContext>
         <vm:ViewModelMainWindow/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="TransparentButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="Transparent">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Key="Q" Command="{Binding MakeSound}" CommandParameter="1" />
         <KeyBinding Key="W" Command="{Binding MakeSound}" CommandParameter="2" />
         <KeyBinding Key="E" Command="{Binding MakeSound}" CommandParameter="3" />
         <KeyBinding Key="R" Command="{Binding MakeSound}" CommandParameter="4" />
+        <KeyBinding Key="I" Command="{Binding MakeSound}" CommandParameter="5" />
+        <KeyBinding Key="O" Command="{Binding MakeSound}" CommandParameter="6" />
+        <KeyBinding Key="P" Command="{Binding MakeSound}" CommandParameter="7" />
     </Window.InputBindings>
 
     <TabControl Background="#FF060505">
         <TabItem Header="Барабанная панель" >
             <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="D:\Codes\BarabanPanel\bin\Debug\net7.0-windows\back.jpg" Opacity="1"/>
+                </Grid.Background>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
 
@@ -29,22 +60,23 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="1">
-                    
-                </Button>
-                <Button Grid.Row="0" Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="2"/>
-                <Button Grid.Row="1" Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="3"/>
-                <Button Grid.Row="1" Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="4"/>
+                <Button Grid.Row="0" Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="1" Style="{StaticResource TransparentButtonStyle}" Margin="270,330,0,0"/>
+                <Button Grid.Column="1" Command="{Binding MakeSound}" CommandParameter="2" Style="{StaticResource TransparentButtonStyle}" Margin="120,36,104,259" Grid.Row="1"/>
+                <Button Grid.Row="0" Grid.Column="2" Command="{Binding MakeSound}" CommandParameter="3" Style="{StaticResource TransparentButtonStyle}" Margin="0,330,204,0"/>
+                <Button Grid.Column="2" Command="{Binding MakeSound}" CommandParameter="4" Style="{StaticResource TransparentButtonStyle}" Margin="137,66,42,201" Grid.Row="1" Cursor="Hand"/>
+                <Button Grid.Row="0" Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="5" Style="{StaticResource TransparentButtonStyle}" Grid.ColumnSpan="2" Margin="361,78,297,219"/>
+                <Button Grid.Column="0" Command="{Binding MakeSound}" CommandParameter="6" Style="{StaticResource TransparentButtonStyle}" Margin="297,476,397,345" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                <Button Grid.Row="0" Grid.Column="2" Command="{Binding MakeSound}" CommandParameter="7" Style="{StaticResource TransparentButtonStyle}" Margin="437,330,177,452" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             </Grid>
         </TabItem>
         <TabItem Header="Попадание в ритм">
             <DockPanel>
-                <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" Height="905" Width="1738"/>
+                <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" />
             </DockPanel>
         </TabItem>
         <TabItem Header="Мелодии">
             <DockPanel>
-                <pages:GetInMelodyControll DockPanel.Dock="Bottom" DataContext="{Binding _getInMelodyViewModel}" Height="905" Width="1738"/>
+                <pages:GetInMelodyControll DockPanel.Dock="Bottom" DataContext="{Binding _getInMelodyViewModel}" />
             </DockPanel>
         </TabItem>
     </TabControl>
