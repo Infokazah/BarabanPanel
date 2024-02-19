@@ -1,16 +1,13 @@
-﻿using BarabanPanel.Infrastructure.Commands;
-using BarabanPanel.Infrastructure.Commands.Base;
-using BarabanPanel.Models;
+﻿using BarabanPanel.Models;
 using BarabanPanel.Services;
-using BarabanPanel.ViewModel.Base;
+using BaseClassesLyb;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
 {
@@ -62,10 +59,10 @@ namespace BarabanPanel.ViewModels
             }
         }
         #endregion
-        public CommandBase StartMelody { get; }
-        private bool CanStartMelodyExecute(object p) => true;
+        public SimpleCommand StartMelody { get; }
+        private bool CanStartMelodyExecute() => true;
 
-        private void StartMelodyExecute(object melody)
+        private void StartMelodyExecute()
         {
            if(MelodyName != null)
            {
@@ -195,7 +192,7 @@ namespace BarabanPanel.ViewModels
         {
             JsonReader reader = new JsonReader();
             Melodies = reader.GetDictionaryNames();
-            StartMelody = new RegularCommand(StartMelodyExecute, CanStartMelodyExecute);
+            StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);
         }
         public GetInMelodyViewModel(ViewModelMainWindow MainModel)
         {
@@ -203,7 +200,7 @@ namespace BarabanPanel.ViewModels
             _reader= new JsonReader();
             _soundPlayer = new SoundPlayer();
             Melodies = _reader.GetDictionaryNames();
-            StartMelody = new RegularCommand(StartMelodyExecute, CanStartMelodyExecute);
+            StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);
             CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
             BarabanName = "0";
         }

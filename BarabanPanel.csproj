@@ -10,11 +10,18 @@
   <ItemGroup>
     <Folder Include="Data\Sounds\" />
     <Folder Include="Infrastructure\Converters\" />
+    <Folder Include="Infrastructure\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.2.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WpfBaseLyb">
+      <HintPath>..\WpfBaseLyb\bin\Debug\net7.0-windows\WpfBaseLyb.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -1,15 +1,10 @@
-﻿using BarabanPanel.Infrastructure.Commands.Base;
-using BarabanPanel.ViewModel.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Media;
-using System.Text;
 using System.Threading.Tasks;
-using BarabanPanel.Views;
 using System.Windows;
-using BarabanPanel.Infrastructure.Commands;
 using System.IO;
+using BaseClassesLyb;
+using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
 {
@@ -87,10 +82,10 @@ namespace BarabanPanel.ViewModels
         
 
         #region Комманды
-        public CommandBase StartCommand { get; }
-        private bool CanStartExecute(object p) => true;
+        public SimpleCommand StartCommand { get; }
+        private bool CanStartExecute() => true;
 
-        private void StartExecute(object filePath)
+        private void StartExecute()
         {
             _inRitm = !_inRitm;
             if(_inRitm)
@@ -106,10 +101,10 @@ namespace BarabanPanel.ViewModels
             UpdateTimeAsync();
         }
 
-        public CommandBase CheckTime { get; }
-        private bool CanCheckTimeExecute(object p) => true;
+        public SimpleCommand CheckTime { get; }
+        private bool CanCheckTimeExecute() => true;
 
-        private void CheckTimeExecute(object filePath)
+        private void CheckTimeExecute()
         {
             _barabanSoundPlayer.Play();
             if(_inRitm == true)
@@ -134,13 +129,13 @@ namespace BarabanPanel.ViewModels
 
         public GetInRitmViewModel() : this(null)
         {
-            CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
+            CheckTime = new SimpleCommand(CheckTimeExecute, CanCheckTimeExecute);
         }
         public GetInRitmViewModel(ViewModelMainWindow MainModel) 
         {
             _MainViewModel = MainModel;
-            CheckTime = new RegularCommand(CheckTimeExecute, CanCheckTimeExecute);
-            StartCommand = new RegularCommand(StartExecute, CanStartExecute);
+            CheckTime = new SimpleCommand(CheckTimeExecute, CanCheckTimeExecute);
+            StartCommand = new SimpleCommand(StartExecute, CanStartExecute);
             CurrentTime = 0;
             _ritmSoundPlayer = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), "GetInRitm.wav"));
             _barabanSoundPlayer = new SoundPlayer(Path.Combine(Directory.GetCurrentDirectory(), "GetInRitmBar.wav"));

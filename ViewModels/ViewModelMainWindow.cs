@@ -1,15 +1,10 @@
-﻿using BarabanPanel.Infrastructure.Commands;
-using BarabanPanel.Infrastructure.Commands.Base;
-using BarabanPanel.Models;
-using BarabanPanel.ViewModel.Base;
+﻿using BarabanPanel.Models;
+using BaseClassesLyb;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Media;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
 {
@@ -39,11 +34,11 @@ namespace BarabanPanel.ViewModels
         }
         #region Комманды
 
-        public CommandBase ToggleLoop { get; }
+        public SimpleCommand ToggleLoop { get; }
 
-        private bool CanToggleLoopExecute(object p) => true;
+        private bool CanToggleLoopExecute() => true;
 
-        private void ToggleLoopExecute(object parameter)
+        private void ToggleLoopExecute()
         {
             _isLooping = !_isLooping;
 
@@ -79,7 +74,7 @@ namespace BarabanPanel.ViewModels
             _getInMelodyViewModel = new GetInMelodyViewModel(this); 
             _soundPlayer = new SoundManager();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
-            ToggleLoop = new RegularCommand(ToggleLoopExecute, CanToggleLoopExecute);
+            ToggleLoop = new SimpleCommand(ToggleLoopExecute, CanToggleLoopExecute);
         }
     }
 }
