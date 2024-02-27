@@ -1,4 +1,5 @@
 ﻿using BarabanPanel.Services;
+using BarabanPanel.Services.Interfaces;
 using BarabanPanel.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -47,7 +48,7 @@ namespace BarabanPanel
             services.AddSingleton<GetInMelodyViewModel>();
             services.AddSingleton<GetInRitmViewModel>();
             services.AddSingleton<ViewModelMainWindow>();
-            services.AddSingleton<JsonReader>();
+            services.AddSingleton<IJsonReader, JsonReader>();
         }
 
 #pragma warning disable CS8603 // Возможно, возврат ссылки, допускающей значение NULL.

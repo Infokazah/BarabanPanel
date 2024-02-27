@@ -1,4 +1,5 @@
 ﻿using BarabanPanel.Models;
+using BarabanPanel.Services.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace BarabanPanel.Services
 {
-    class JsonReader
+    class JsonReader : IJsonReader
     {
         private static readonly string filePath = Path.Combine(Directory.GetCurrentDirectory(), "TextFile1.json");
         private readonly string jsonContent = File.ReadAllText(filePath);

@@ -1,5 +1,6 @@
 ﻿using BarabanPanel.Models;
 using BarabanPanel.Services;
+using BarabanPanel.Services.Interfaces;
 using BaseClassesLyb;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace BarabanPanel.ViewModels
 {
     class GetInMelodyViewModel : ViewModelBase
     {
-        private ViewModelMainWindow _MainViewModel;
+        public ViewModelMainWindow _MainViewModel { get; set; }
         private SoundPlayer _soundPlayer;
         private JsonReader _reader;
         private string _directory = Directory.GetCurrentDirectory();
@@ -188,16 +189,15 @@ namespace BarabanPanel.ViewModels
             
         }
         #endregion
-        public GetInMelodyViewModel() : this(null)
+        /*public GetInMelodyViewModel() : this(null)
         {
             JsonReader reader = new JsonReader();
             Melodies = reader.GetDictionaryNames();
             StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);
-        }
-        public GetInMelodyViewModel(ViewModelMainWindow MainModel)
+        }*/
+        public GetInMelodyViewModel(IJsonReader reader)
         {
-            _MainViewModel = MainModel;
-            _reader= new JsonReader();
+            _reader = (JsonReader?)reader;
             _soundPlayer = new SoundPlayer();
             Melodies = _reader.GetDictionaryNames();
             StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);

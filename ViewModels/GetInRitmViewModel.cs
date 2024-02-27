@@ -12,7 +12,7 @@ namespace BarabanPanel.ViewModels
     {
         #region Атрибуты
         private bool _inRitm = false;
-        private ViewModelMainWindow _MainViewModel { get; }
+        public ViewModelMainWindow _MainViewModel { get; set; }
 
         
 
@@ -127,13 +127,12 @@ namespace BarabanPanel.ViewModels
         }
         #endregion
 
-        public GetInRitmViewModel() : this(null)
+        /*public GetInRitmViewModel() : this(null)
         {
             CheckTime = new SimpleCommand(CheckTimeExecute, CanCheckTimeExecute);
-        }
-        public GetInRitmViewModel(ViewModelMainWindow MainModel) 
+        }*/
+        public GetInRitmViewModel() 
         {
-            _MainViewModel = MainModel;
             CheckTime = new SimpleCommand(CheckTimeExecute, CanCheckTimeExecute);
             StartCommand = new SimpleCommand(StartExecute, CanStartExecute);
             CurrentTime = 0;
