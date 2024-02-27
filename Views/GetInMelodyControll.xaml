@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:BarabanPanel.Views"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:BarabanPanel.ViewModels"
-             d:DataContext="{d:DesignInstance vm:GetInMelodyViewModel, d:IsDesignTimeCreatable=True}"
+             d:DataContext="{d:DesignInstance Type=vm:GetInMelodyViewModel}"
+            DataContext="{Binding GetInMelody, Source={StaticResource Locator}}"
              d:DesignHeight="1000" d:DesignWidth="1900">
     <UserControl.InputBindings>
         <KeyBinding Key="Q" Command="{Binding CheckTime}" CommandParameter="1" />

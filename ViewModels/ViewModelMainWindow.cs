@@ -68,10 +68,12 @@ namespace BarabanPanel.ViewModels
             }
         }
         #endregion
-        public ViewModelMainWindow() 
+        public ViewModelMainWindow(GetInRitmViewModel getInRitm, GetInMelodyViewModel getInMelody) 
         {
-            _getInRitmViewModel = new GetInRitmViewModel(this);
-            _getInMelodyViewModel = new GetInMelodyViewModel(this); 
+            _getInRitmViewModel = getInRitm;
+            _getInRitmViewModel._MainViewModel = this;
+            _getInMelodyViewModel = getInMelody; 
+            _getInMelodyViewModel._MainViewModel = this;
             _soundPlayer = new SoundManager();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
             ToggleLoop = new SimpleCommand(ToggleLoopExecute, CanToggleLoopExecute);

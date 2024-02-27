@@ -29,7 +29,7 @@ namespace BarabanPanel
             [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "8.0.2.0")]
             public static void Main()
             {
-                MVVMTrening.App app = new MVVMTrening.App();
+                BarabanPanel.App app = new BarabanPanel.App();
                 app.InitializeComponent();
                 app.Run();
             }
