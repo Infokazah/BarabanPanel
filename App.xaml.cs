@@ -20,13 +20,16 @@ namespace BarabanPanel
         private static IHost _host;
         public static IHost Host => _host ?? Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
 
+        public static IServiceProvider Services => Host.Services;
         protected override async void OnStartup(StartupEventArgs e)
         {
             IsDesignMode = false;
             var host = Host;
+            using (var scope = Services.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
+            }
             base.OnStartup(e);
-
-
             host.StartAsync().ConfigureAwait(false);
         }
 
