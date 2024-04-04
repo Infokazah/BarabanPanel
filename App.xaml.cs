@@ -1,16 +1,11 @@
-﻿using BarabanPanel.Services;
-using BarabanPanel.Services.Interfaces;
+﻿using BarabanPanel.Data.StatisticDb;
+using BarabanPanel.Services;
 using BarabanPanel.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace BarabanPanel
@@ -31,6 +26,7 @@ namespace BarabanPanel
             var host = Host;
             base.OnStartup(e);
 
+
             host.StartAsync().ConfigureAwait(false);
         }
 
@@ -43,13 +39,10 @@ namespace BarabanPanel
             await host.StopAsync().ConfigureAwait(false);
             _host = null;
         }
-        public static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
-        {
-            services.AddSingleton<GetInMelodyViewModel>();
-            services.AddSingleton<GetInRitmViewModel>();
-            services.AddSingleton<ViewModelMainWindow>();
-            services.AddSingleton<IJsonReader, JsonReader>();
-        }
+        public static void ConfigureServices(HostBuilderContext context, IServiceCollection services) => services
+            .RegisterServices()
+            .RegisterViewModels()
+            .AddDataBase(context.Configuration.GetSection("Database"));
 
 #pragma warning disable CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
         public static string CurrentDirectory => IsDesignMode ? Path.GetDirectoryName(GetSourceCodePath())

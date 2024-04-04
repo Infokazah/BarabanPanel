@@ -48,6 +48,7 @@ namespace BarabanPanel.ViewModels
             }
         }
 
+        
         private SoundManager _soundPlayer;
         public CommandBase MakeSound { get; }
         private bool CanMakeSoundExecute(object p) => true;
