@@ -1,6 +1,7 @@
 ﻿{
   "Melodies": [
     {
+      "Id": "0",
       "Name": "Melody1",
       "BarabanParts": [
         {
@@ -18,6 +19,7 @@
       ]
     },
     {
+      "Id": "1",
       "Name": "Melody2",
       "BarabanParts": [
         {
@@ -31,6 +33,7 @@
       ]
     },
     {
+      "Id": "2",
       "Name": "Melody3",
       "BarabanParts": [
         {

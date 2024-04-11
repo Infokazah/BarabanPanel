@@ -71,12 +71,17 @@
         </TabItem>
         <TabItem Header="Попадание в ритм">
             <DockPanel>
-                <pages:GetInRitmControll DockPanel.Dock="Bottom" DataContext="{Binding _getInRitmViewModel}" />
+                <pages:GetInRitmControll DockPanel.Dock="Bottom" />
             </DockPanel>
         </TabItem>
         <TabItem Header="Мелодии">
             <DockPanel>
-                <pages:GetInMelodyControll DockPanel.Dock="Bottom" DataContext="{Binding _getInMelodyViewModel}" />
+                <pages:GetInMelodyControll DockPanel.Dock="Bottom" />
+            </DockPanel>
+        </TabItem>
+        <TabItem Header="Статистика">
+            <DockPanel>
+                <pages:UserStatisticControll DockPanel.Dock="Bottom" />
             </DockPanel>
         </TabItem>
     </TabControl>

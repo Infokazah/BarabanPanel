@@ -15,6 +15,7 @@ namespace BarabanPanel.ViewModels
             services.AddSingleton<GetInMelodyViewModel>();
             services.AddSingleton<GetInRitmViewModel>();
             services.AddSingleton<ViewModelMainWindow>();
+            services.AddSingleton<UserStatisticViewModel>();
             return services;
         }
     }

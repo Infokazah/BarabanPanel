@@ -8,6 +8,7 @@ namespace BarabanPanel.Models
 {
     class Melody
     {
+        public int Id { get; set; }
         public string Name { get; set;}
         public List<PartOfMelody> BarabanParts { get; set; }
     }

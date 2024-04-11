@@ -28,7 +28,7 @@ namespace BarabanPanel.Data.StatisticDb
             _logger.LogInformation("Инициализация БД...");
             _db.Database.Migrate();
 
-            if (await _db.Books.AnyAsync().ConfigureAwait(false)) return;
+            if (await _db.MelStatDb.AnyAsync().ConfigureAwait(false)) return;
 
             await InitializeCategories().ConfigureAwait(false);
             _logger.LogInformation("Инициализация БД выполненно за {0}", timer.Elapsed.TotalSeconds);

@@ -11,10 +11,7 @@ namespace BarabanPanel.ViewModels
     internal class GetInRitmViewModel : ViewModelBase
     {
         #region Атрибуты
-        private bool _inRitm = false;
-        public ViewModelMainWindow _MainViewModel { get; set; }
-
-        
+        private bool _inRitm = false;        
 
         private SoundPlayer _ritmSoundPlayer;
 

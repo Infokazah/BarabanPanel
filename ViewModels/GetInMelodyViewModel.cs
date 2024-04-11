@@ -14,7 +14,6 @@ namespace BarabanPanel.ViewModels
 {
     class GetInMelodyViewModel : ViewModelBase
     {
-        public ViewModelMainWindow _MainViewModel { get; set; }
         private SoundPlayer _soundPlayer;
         private JsonReader _reader;
         private string _directory = Directory.GetCurrentDirectory();

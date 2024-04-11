@@ -43,9 +43,9 @@ namespace BarabanPanel
             _host = null;
         }
         public static void ConfigureServices(HostBuilderContext context, IServiceCollection services) => services
+            .AddDataBase(context.Configuration.GetSection("Database"))
             .RegisterServices()
-            .RegisterViewModels()
-            .AddDataBase(context.Configuration.GetSection("Database"));
+            .RegisterViewModels();
 
 #pragma warning disable CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
         public static string CurrentDirectory => IsDesignMode ? Path.GetDirectoryName(GetSourceCodePath())
