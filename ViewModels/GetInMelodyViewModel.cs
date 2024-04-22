@@ -2,6 +2,7 @@
 using BarabanPanel.Services;
 using BarabanPanel.Services.Interfaces;
 using BaseClassesLyb;
+using Rep_interfases;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
 using UserStatisticDb;
+using UserStatisticDb.Entityes;
 using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
@@ -17,6 +19,7 @@ namespace BarabanPanel.ViewModels
     {
         private SoundPlayer _soundPlayer;
         private JsonReader _reader;
+        private readonly Repository<MelStat> MelodyRepository;
         private string _directory = Directory.GetCurrentDirectory();
 
         #region Атрибуты мдля мелодии
@@ -184,7 +187,9 @@ namespace BarabanPanel.ViewModels
             else
             {
                 MessageBox.Show("Мелодия пройдена");
-
+                MelStat CurMelStat = MelodyRepository.Get(CurrentMelody.Id);
+                CurMelStat.IsComplete = true;
+                MelodyRepository.Update(CurMelStat);
                 _inRitm = false;
             }
             
@@ -196,9 +201,10 @@ namespace BarabanPanel.ViewModels
             Melodies = reader.GetDictionaryNames();
             StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);
         }*/
-        public GetInMelodyViewModel(IJsonReader reader)
+        public GetInMelodyViewModel(IJsonReader reader, IRepository<MelStat> melrep)
         {
             _reader = (JsonReader?)reader;
+            MelodyRepository = (Repository<MelStat>?)melrep;
             _soundPlayer = new SoundPlayer();
             Melodies = _reader.GetDictionaryNames();
             StartMelody = new SimpleCommand(StartMelodyExecute, CanStartMelodyExecute);

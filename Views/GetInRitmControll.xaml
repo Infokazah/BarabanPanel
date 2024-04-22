@@ -9,7 +9,8 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:GetInRitmViewModel}"
             DataContext="{Binding GetInRitm, Source={StaticResource Locator}}"
-            d:DesignHeight="1000" d:DesignWidth="1900">
+            d:DesignHeight="1000" d:DesignWidth="1900"
+             Background="{StaticResource MainBrushBackground}">
     <UserControl.InputBindings>
         <KeyBinding Key="R" Command="{Binding CheckTime}" />
     </UserControl.InputBindings>
@@ -27,15 +28,21 @@
     CornerRadius="30"/>
         <Button Grid.Row="1" Command="{Binding CheckTime}" />
 
-        <DockPanel  Grid.Row="2" >
-            <Button Content="{Binding CurrentText}"  DockPanel.Dock="Left"
-                FontSize="24" Command="{Binding StartCommand}" Width="925"/>
-            <StackPanel Orientation="Horizontal" Background="White">
-                <TextBlock Text="Введите частоту такта: " Background="White" FontSize="44" />
-                <TextBox Text="{Binding CurrentTemp}" FontSize="44" Width="60" HorizontalAlignment="Center" TextAlignment="Center"/>
+        <Grid   Grid.Row="2"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="{Binding CurrentText}" Height="Auto" Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}"
+                FontSize="24" Command="{Binding StartCommand}" Margin="5,5,5,5" Grid.Column="0"/>
+            <StackPanel Orientation="Horizontal" Background="{StaticResource ElementsBrush}" Margin="5,5,5,5" Grid.Column="1" >
+                <TextBlock Text="Введите частоту такта: " Background="{StaticResource ElementsBrush}" FontSize="40" Foreground="{StaticResource MainBrushForeground}" />
+                <TextBox Text="{Binding CurrentTemp}" FontSize="40" Width="60" HorizontalAlignment="Center" TextAlignment="Center" 
+                         Background="{StaticResource ElementsBrush}"
+                         Foreground="{StaticResource MainBrushForeground}"/>
             </StackPanel>
 
-        </DockPanel>
+        </Grid>
 
     </Grid>
 </UserControl>

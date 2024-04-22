@@ -9,7 +9,8 @@
              DataContext="{Binding UserStatisticModel, Source={StaticResource Locator}}"
              d:DataContext="{d:DesignInstance {x:Type vm:UserStatisticViewModel}}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{StaticResource MainBrushBackground}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,8 +18,8 @@
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0">
             <TextBlock Text="Статистика по мелодиям" DockPanel.Dock="Top" 
-                       HorizontalAlignment="Center" Background="White"/>
-            <ListBox ItemsSource="{Binding MelStatCollection}">
+                       HorizontalAlignment="Center" Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}"/>
+            <ListBox ItemsSource="{Binding MelStatCollection}" Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}">
                 <ListBox.Resources>
                     <Style TargetType="TextBlock">
                         <Setter Property="Background" Value="Red"/>
@@ -42,24 +43,24 @@
                         <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Border.Style>
                                 <Style TargetType="Border">
-                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Background" Value="{StaticResource UnCompleteBrushBack}"/>
                                     <Setter Property="BorderThickness" Value="10"/>
                                     <Setter Property="CornerRadius" Value="15"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsComplete}" Value="True">
-                                            <Setter Property="Background" Value="Green"/>
+                                            <Setter Property="Background" Value="{StaticResource CompleteBrush}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
                             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                 <TextBlock Text="{Binding Name}" FontSize="32" Width="400" Margin="5"/>
-                                <fa:ImageAwesome Icon="Solid_Ad" Foreground="DarkRed" Height="32" Margin="5">
+                                <fa:ImageAwesome Icon="Solid_Ad" Foreground="{StaticResource UnCompleteBrushForeground}" Height="32" Margin="5">
                                     <fa:ImageAwesome.Style>
                                         <Style TargetType="fa:ImageAwesome">
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding IsComplete}" Value="True">
-                                                    <Setter Property="Foreground" Value="DarkGreen"/>
+                                                    <Setter Property="Foreground" Value="{StaticResource CompleteBrushForeground}"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
@@ -74,8 +75,8 @@
         </DockPanel>
         <DockPanel Grid.Column="1">
             <TextBlock Text="Статистика по практике ритма" DockPanel.Dock="Top" 
-               HorizontalAlignment="Center" Background="White"/>
-            <ListBox ItemsSource="{Binding TempStatCollection}"/>
+               HorizontalAlignment="Center" Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}"/>
+            <ListBox ItemsSource="{Binding TempStatCollection}" Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}"/>
         </DockPanel>
     </Grid>
 </UserControl>

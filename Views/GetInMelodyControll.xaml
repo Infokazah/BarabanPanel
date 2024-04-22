@@ -100,19 +100,18 @@
                     Margin="5"
                     Command="{Binding StartMelody}"  
                     DockPanel.Dock="Bottom" 
+                    Foreground="{StaticResource MainBrushForeground}"
                     Background="{StaticResource ElementsBrush}" Width="450"/>
         </DockPanel>
         <DockPanel Grid.Row="0" Grid.Column="2">
             <Border  Background="Black"  DockPanel.Dock="Top">
-                <TextBlock Background="White" Text="{Binding BarabanName}" FontSize="64" TextAlignment="Center" Height="75"/>
+                <TextBlock Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}" Text="{Binding BarabanName}"  FontSize="64" TextAlignment="Center" Height="75"/>
             </Border>
-            <TextBlock Background="White" Text="{Binding CurrentTemp}"
+            <TextBlock Background="{StaticResource ElementsBrush}" Foreground="{StaticResource MainBrushForeground}" Text="{Binding CurrentTemp}"
            FontSize="24" 
            TextAlignment="Center" 
            Grid.Row="0" Grid.Column="2" DockPanel.Dock="Bottom"/>
         </DockPanel>
         
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Background="White">
-        </StackPanel>
     </Grid>
 </UserControl>
