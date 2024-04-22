@@ -43,7 +43,7 @@
         <KeyBinding Key="P" Command="{Binding MakeSound}" CommandParameter="7" />
     </Window.InputBindings>
 
-    <TabControl Background="#FF060505">
+    <TabControl Background="#FF060505" Foreground="{StaticResource MainBrushForeground}">
         <TabItem Header="Барабанная панель" >
             <Grid>
                 <Grid.Background>

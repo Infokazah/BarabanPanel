@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarabanPanel", "BarabanPanel.csproj", "{EF7992E9-99EB-4F3B-99C2-7BCDF31EF116}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserStatisticDb", "..\UserStatistic\UserStatisticDb.csproj", "{97C64C7D-2518-4223-BD32-E0F2AE90A254}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserStatisticDb", "..\UserStatistic\UserStatisticDb.csproj", "{97C64C7D-2518-4223-BD32-E0F2AE90A254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rep_interfases", "..\Rep_interfases\Rep_interfases.csproj", "{9E05DBC6-C213-47EA-B0C6-0DC9D36B85FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rep_interfases", "..\Rep_interfases\Rep_interfases.csproj", "{9E05DBC6-C213-47EA-B0C6-0DC9D36B85FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

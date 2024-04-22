@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="UnCompleteBrushBack" Color="#E98074"/>
+    <SolidColorBrush x:Key="CompleteBrush" Color="#AFD275"/>
+    <SolidColorBrush x:Key="UnCompleteBrushForeground" Color="#E85A4F"/>
+    <SolidColorBrush x:Key="CompleteBrushForeground" Color="#14A76C"/>
+    <SolidColorBrush x:Key="MainBrushBackground" Color="#EAE7DC"/>
+    <SolidColorBrush x:Key="MainBrushForeground" Color="#D8C3A5"/>
+    <SolidColorBrush x:Key="ElementsBrush" Color="#8E8D8A"/>
+</ResourceDictionary>

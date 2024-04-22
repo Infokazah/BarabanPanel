@@ -10,9 +10,7 @@ using System.Windows;
 
 namespace BarabanPanel
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
+
     public partial class App : Application
     {
         public static bool IsDesignMode { get; private set; } = true;
@@ -47,10 +45,8 @@ namespace BarabanPanel
             .RegisterServices()
             .RegisterViewModels();
 
-#pragma warning disable CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
         public static string CurrentDirectory => IsDesignMode ? Path.GetDirectoryName(GetSourceCodePath())
             : Environment.CurrentDirectory;
-#pragma warning restore CS8603 // Возможно, возврат ссылки, допускающей значение NULL.
 
         private static string GetSourceCodePath([CallerFilePath] string Path = null) => Path;
     }

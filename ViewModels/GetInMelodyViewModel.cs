@@ -8,6 +8,7 @@ using System.IO;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
+using UserStatisticDb;
 using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
@@ -183,6 +184,7 @@ namespace BarabanPanel.ViewModels
             else
             {
                 MessageBox.Show("Мелодия пройдена");
+
                 _inRitm = false;
             }
             
