@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="BarabanPanel.Views.UserStatisticControll"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:BarabanPanel.ViewModels"
+             xmlns:fa="http://schemas.fontawesome.com/icons/"
+             xmlns:local="clr-namespace:BarabanPanel.Views"
+             DataContext="{Binding UserStatisticModel, Source={StaticResource Locator}}"
+             d:DataContext="{d:DesignInstance {x:Type vm:UserStatisticViewModel}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <TextBlock Text="Статистика по мелодиям" DockPanel.Dock="Top" 
+                       HorizontalAlignment="Center" Background="White"/>
+            <ListBox ItemsSource="{Binding MelStatCollection}">
+                <ListBox.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Background" Value="Red"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsComplete}" Value="True">
+                                <Setter Property="Background" Value="Green"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Background" Value="Red"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsComplete}" Value="True">
+                                <Setter Property="Background" Value="Green"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="BorderThickness" Value="10"/>
+                                    <Setter Property="CornerRadius" Value="15"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsComplete}" Value="True">
+                                            <Setter Property="Background" Value="Green"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <TextBlock Text="{Binding Name}" FontSize="32" Width="400" Margin="5"/>
+                                <fa:ImageAwesome Icon="Solid_Ad" Foreground="DarkRed" Height="32" Margin="5">
+                                    <fa:ImageAwesome.Style>
+                                        <Style TargetType="fa:ImageAwesome">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsComplete}" Value="True">
+                                                    <Setter Property="Foreground" Value="DarkGreen"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </fa:ImageAwesome.Style>
+                                </fa:ImageAwesome>
+                            </StackPanel>
+                        </Border>
+
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1">
+            <TextBlock Text="Статистика по практике ритма" DockPanel.Dock="Top" 
+               HorizontalAlignment="Center" Background="White"/>
+            <ListBox ItemsSource="{Binding TempStatCollection}"/>
+        </DockPanel>
+    </Grid>
+</UserControl>

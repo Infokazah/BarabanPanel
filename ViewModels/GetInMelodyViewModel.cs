@@ -8,13 +8,13 @@ using System.IO;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
+using UserStatisticDb;
 using WpfBaseLyb;
 
 namespace BarabanPanel.ViewModels
 {
     class GetInMelodyViewModel : ViewModelBase
     {
-        public ViewModelMainWindow _MainViewModel { get; set; }
         private SoundPlayer _soundPlayer;
         private JsonReader _reader;
         private string _directory = Directory.GetCurrentDirectory();
@@ -184,6 +184,7 @@ namespace BarabanPanel.ViewModels
             else
             {
                 MessageBox.Show("Мелодия пройдена");
+
                 _inRitm = false;
             }
             

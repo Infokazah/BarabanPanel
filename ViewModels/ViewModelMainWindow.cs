@@ -48,6 +48,7 @@ namespace BarabanPanel.ViewModels
             }
         }
 
+        
         private SoundManager _soundPlayer;
         public CommandBase MakeSound { get; }
         private bool CanMakeSoundExecute(object p) => true;
@@ -68,12 +69,8 @@ namespace BarabanPanel.ViewModels
             }
         }
         #endregion
-        public ViewModelMainWindow(GetInRitmViewModel getInRitm, GetInMelodyViewModel getInMelody) 
+        public ViewModelMainWindow(GetInRitmViewModel getInRitm, GetInMelodyViewModel getInMelody, UserStatisticViewModel userStat) 
         {
-            _getInRitmViewModel = getInRitm;
-            _getInRitmViewModel._MainViewModel = this;
-            _getInMelodyViewModel = getInMelody; 
-            _getInMelodyViewModel._MainViewModel = this;
             _soundPlayer = new SoundManager();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
             ToggleLoop = new SimpleCommand(ToggleLoopExecute, CanToggleLoopExecute);

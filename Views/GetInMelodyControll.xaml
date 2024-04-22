@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BarabanPanel.Views"
+             xmlns:Res="clr-namespace:BarabanPanel.Resources"
              mc:Ignorable="d" 
              xmlns:vm="clr-namespace:BarabanPanel.ViewModels"
              d:DataContext="{d:DesignInstance Type=vm:GetInMelodyViewModel}"
             DataContext="{Binding GetInMelody, Source={StaticResource Locator}}"
-             d:DesignHeight="1000" d:DesignWidth="1900">
+             d:DesignHeight="1000" d:DesignWidth="1900"
+             Background="{StaticResource MainBrushBackground}">
     <UserControl.InputBindings>
         <KeyBinding Key="Q" Command="{Binding CheckTime}" CommandParameter="1" />
         <KeyBinding Key="W" Command="{Binding CheckTime}" CommandParameter="2" />
@@ -40,6 +42,10 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <SolidColorBrush x:Key="ProgressBar.Progress" Color="#FF06B025"/>
+        <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="ProgressBar.Border" Color="#FFBCBCBC"/>
+        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -53,8 +59,15 @@
             <RowDefinition Height="8*"/>
 
         </Grid.RowDefinitions>
-        <ProgressBar  Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" Background="Gray" Foreground="#FFCACACA" Grid.Column="0" Grid.Row="0"/>
-
+        <Border BorderBrush="{StaticResource CompleteBrushForeground}" BorderThickness="5" CornerRadius="35" Grid.Column="0" Grid.Row="0" Margin="10">
+            <Res:CornerProgressBar  Style="{StaticResource CircleProgressBar}"  Value="{Binding CurrentTime}" Maximum="{Binding CurrentTemp}" 
+   Background="{StaticResource CompleteBrushForeground}" 
+   Foreground="{StaticResource CompleteBrush}"
+   BorderBrush="{StaticResource CompleteBrushForeground}"
+   Margin="0"
+   RectangleCornerRadius="35"
+   CornerRadius="30"/>
+        </Border>
         <Grid HorizontalAlignment="Left" Margin="0,111,0,0" Grid.RowSpan="2" Width="1744" Grid.ColumnSpan="2">
             <Grid.Background>
                 <ImageBrush ImageSource="D:\Codes\BarabanPanel\bin\Debug\net7.0-windows\back.jpg" Opacity="1"/>
@@ -80,15 +93,25 @@
         </Grid>
 
         <DockPanel Grid.Column="1" Grid.Row="0" >
-            <ComboBox ItemsSource="{Binding Melodies}" Height="50" SelectedItem="{Binding MelodyName}" DockPanel.Dock="Top" FontSize="28" Background="White"/>
+            <ComboBox ItemsSource="{Binding Melodies}" Height="50" SelectedItem="{Binding MelodyName}" DockPanel.Dock="Top" 
+                      FontSize="28" Background="{StaticResource ElementsBrush}" 
+                      Foreground="{StaticResource MainBrushForeground}"/>
             <Button Content="Start" FontSize="24" 
+                    Margin="5"
                     Command="{Binding StartMelody}"  
                     DockPanel.Dock="Bottom" 
-                    Background="White"/>
+                    Background="{StaticResource ElementsBrush}" Width="450"/>
         </DockPanel>
-        <Border  Grid.Row="0" Grid.Column="2" Background="Black" >
-            <TextBlock Background="White" Text="{Binding BarabanName}" FontSize="64" TextAlignment="Center" Margin="1"/>
-        </Border>
+        <DockPanel Grid.Row="0" Grid.Column="2">
+            <Border  Background="Black"  DockPanel.Dock="Top">
+                <TextBlock Background="White" Text="{Binding BarabanName}" FontSize="64" TextAlignment="Center" Height="75"/>
+            </Border>
+            <TextBlock Background="White" Text="{Binding CurrentTemp}"
+           FontSize="24" 
+           TextAlignment="Center" 
+           Grid.Row="0" Grid.Column="2" DockPanel.Dock="Bottom"/>
+        </DockPanel>
+        
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" Background="White">
         </StackPanel>
     </Grid>
