@@ -7,6 +7,10 @@ using System.Windows.Data;
 using UserStatisticDb.Entityes;
 using BarabanPanel.Services.Extensions;
 using BarabanPanel.Services.Interfaces;
+using System;
+using System.Windows;
+using WpfBaseLyb;
+using System.Linq;
 
 namespace BarabanPanel.ViewModels
 {
@@ -15,8 +19,6 @@ namespace BarabanPanel.ViewModels
         private readonly IRepository<MelStat> _MelStatRepository;
         private readonly IRepository<TempStat> _TempStatRepository;
 
-        private readonly CollectionViewSource _MelStatViewSource;
-        private readonly CollectionViewSource _TempStatViewSource;
 
         private ObservableCollection<MelStat> _MelStatCollection;
         public ObservableCollection<MelStat> MelStatCollection
@@ -25,8 +27,7 @@ namespace BarabanPanel.ViewModels
 
             set
             {
-                if (Set(ref _MelStatCollection, value))
-                    _MelStatViewSource.Source = value;
+                Set(ref _MelStatCollection, value);
             }
         }
 
@@ -37,9 +38,75 @@ namespace BarabanPanel.ViewModels
 
             set
             {
-                if (Set(ref _TempStatCollection, value))
-                    _MelStatViewSource.Source = value;
+                Set(ref _TempStatCollection, value);
             }
+        }
+
+        private Visibility ritmVisibility;
+
+        public Visibility RitmVisibility
+        {
+            get => ritmVisibility;
+
+            set
+            {
+                ritmVisibility = value;
+                OnPropertyChanged(nameof(RitmVisibility));
+            }
+        }
+
+        private Visibility melodyVisibility;
+
+        public Visibility MelodyVisibility
+        {
+            get => melodyVisibility;
+
+            set
+            {
+                melodyVisibility = value;
+                OnPropertyChanged(nameof(MelodyVisibility));
+            }
+        }
+
+
+        private DateTime date;
+
+        public DateTime Date
+        {
+            get => date;
+
+            set
+            {
+                date = value;
+                MelStatCollection = _MelStatRepository.Items.ToArray().Where(i => i.Data.Month == date.Month).ToObservableCollection();
+                TempStatCollection = _TempStatRepository.Items.ToArray().Where(i => i.Data.Month == date.Month).ToObservableCollection();
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+
+        public SimpleCommand ChangeCommand { get; }
+        private bool CanChangeExecute() => true;
+
+        private void ChangeExecute()
+        {
+            if(MelodyVisibility == Visibility.Visible)
+            {
+                MelodyVisibility = Visibility.Hidden;
+                RitmVisibility = Visibility.Visible;
+            }
+            else
+            {
+                MelodyVisibility = Visibility.Visible;
+                RitmVisibility = Visibility.Hidden;
+            }
+        }
+
+        public SimpleCommand CloseCommand { get; }
+        private bool CanCloseExecute() => true;
+
+        private void CloseExecute()
+        {
+            App.CurrentWindow.Close();
         }
         private async Task DownloadDataAsync()
         {
@@ -47,15 +114,16 @@ namespace BarabanPanel.ViewModels
 
             TempStatCollection = (await _TempStatRepository.Items.ToArrayAsync()).ToObservableCollection();
         }
+
+       
         public UserStatisticViewModel( IRepository<MelStat> melodiestats,
-            IRepository<TempStat> tempstats, IDataService dataservice)
+            IRepository<TempStat> tempstats)
         {
             _MelStatRepository = melodiestats;
             _TempStatRepository = tempstats;
-
-            _MelStatViewSource = new();
-            _TempStatViewSource = new();
-
+            ChangeCommand = new SimpleCommand(ChangeExecute,CanChangeExecute);
+            CloseCommand = new SimpleCommand(CloseExecute, CanCloseExecute);
+            date = DateTime.Now;
             DownloadDataAsync();
         }
     }

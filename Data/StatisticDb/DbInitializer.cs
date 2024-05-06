@@ -28,7 +28,7 @@ namespace BarabanPanel.Data.StatisticDb
             _logger.LogInformation("Инициализация БД...");
             _db.Database.Migrate();
 
-            if (await _db.MelStatDb.AnyAsync().ConfigureAwait(false)) return;
+            if (await _db.MelStatTable.AnyAsync().ConfigureAwait(false)) return;
 
             await InitializeCategories().ConfigureAwait(false);
             _logger.LogInformation("Инициализация БД выполненно за {0}", timer.Elapsed.TotalSeconds);
@@ -42,7 +42,7 @@ namespace BarabanPanel.Data.StatisticDb
             _Melody = new MelStat[_MelodyCount];
             for (var i = 0; i < _MelodyCount; i++)
             {
-                _Melody[i] = new MelStat { Name = $"Мелодия {i + 1}" };
+                _Melody[i] = new MelStat { Name = $"Мелодия {i + 1}", CompleteCount="0/10", Data=DateTime.Now };
 
             }
             await _db.AddRangeAsync(_Melody);
