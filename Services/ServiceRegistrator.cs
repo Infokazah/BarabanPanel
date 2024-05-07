@@ -14,7 +14,6 @@ namespace BarabanPanel.Services
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
             services.AddTransient<IJsonReader, JsonReader>();
-            services.AddTransient<IDataService, DataService>();
             return services;
         }
     }

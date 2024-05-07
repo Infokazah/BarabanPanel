@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BarabanPanel.Views
 {
     /// <summary>
-    /// Логика взаимодействия для UserStatisticControll.xaml
+    /// Логика взаимодействия для UserStatisticWindow.xaml
     /// </summary>
-    public partial class UserStatisticControll : UserControl
+    public partial class UserStatisticWindow : Window
     {
-        public UserStatisticControll()
+        public UserStatisticWindow()
         {
             InitializeComponent();
         }

@@ -12,10 +12,8 @@ namespace BarabanPanel.ViewModels
     {
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
-            services.AddSingleton<GetInMelodyViewModel>();
-            services.AddSingleton<GetInRitmViewModel>();
-            services.AddSingleton<ViewModelMainWindow>();
-            services.AddSingleton<UserStatisticViewModel>();
+            services.AddScoped<ViewModelMainWindow>();
+            services.AddScoped<UserStatisticViewModel>();
             return services;
         }
     }

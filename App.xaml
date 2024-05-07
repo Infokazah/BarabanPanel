@@ -11,9 +11,18 @@
         <SolidColorBrush x:Key="CompleteBrush" Color="#AFD275"/>
         <SolidColorBrush x:Key="UnCompleteBrushForeground" Color="#E85A4F"/>
         <SolidColorBrush x:Key="CompleteBrushForeground" Color="#14A76C"/>
-        <SolidColorBrush x:Key="MainBrushBackground" Color="#EAE7DC"/>
-        <SolidColorBrush x:Key="MainBrushForeground" Color="#D8C3A5"/>
-        <SolidColorBrush x:Key="ElementsBrush" Color="#8E8D8A"/>
+        
+        <SolidColorBrush x:Key="MainBrushBackground" Color="#FF393C4A"/>
+        <SolidColorBrush x:Key="MainBrushBackgroundMouseOn" Color="#FF2F313C"/>
+        <SolidColorBrush x:Key="MainBrushForeground" Color="White"/>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="MainBackground">
+            <GradientStop Color="#FF2D2926" Offset="0.004"/>
+            <GradientStop Color="#FF3B3833" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="TopPanelColor" Color="#FF21201E"/>
+        <SolidColorBrush x:Key="ElementsBrush" Color="Transparent"/>
+        <SolidColorBrush x:Key="BorderBrush" Color="#FF7D7761"/>
+        <SolidColorBrush x:Key="MouseOverBrush" Color="#FF2F313C"/>
         <Style x:Key="CircleProgressBar" TargetType="{x:Type Res:CornerProgressBar}">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Template">
@@ -71,5 +80,68 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource ElementsBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource MouseOverBrush}"/>
+                                <Setter Property="TextElement.Background" TargetName="contentPresenter" Value="{StaticResource MouseOverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource BorderBrush}"/>
+                                <Setter Property="TextElement.Background" TargetName="contentPresenter" Value="{StaticResource BorderBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Key="StandartTextBox">
+            <Setter Property="Background" Value="{StaticResource ElementsBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource MainBrushForeground}"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="{StaticResource ElementsBrush}"/>
+        </Style>
+        <Style TargetType="Border" x:Key="StandartBorder">
+            <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="{StaticResource ElementsBrush}"/>
+        </Style>
+
+        
     </Application.Resources>
 </Application>

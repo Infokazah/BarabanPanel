@@ -9,12 +9,12 @@ namespace BarabanPanel.Data.StatisticDb
     static class DbRegistrator
     {
         public static IServiceCollection AddDataBase(this IServiceCollection services, IConfiguration Configuration) => services
-            .AddDbContext<UserStatisticContext>(opt =>
-            {
-                var type = Configuration["Type"];
-                opt.UseSqlServer(Configuration.GetConnectionString(type));
-            })
-        .AddTransient<DbInitializer>()
-        .AddRepositoriesInDb();
+    .AddDbContext<UserStatisticContext>(opt =>
+    {
+        var type = Configuration["Type"];
+        opt.UseSqlServer(Configuration.GetConnectionString(type));
+    }, ServiceLifetime.Scoped) // Здесь устанавливаем жизненный цикл в Scoped
+    .AddRepositoriesInDb();
+
     }
 }
