@@ -528,9 +528,10 @@
         <KeyBinding Key="W" Command="{Binding MakeSound}" CommandParameter="2" />
         <KeyBinding Key="E" Command="{Binding MakeSound}" CommandParameter="3" />
         <KeyBinding Key="R" Command="{Binding MakeSound}" CommandParameter="4" />
-        <KeyBinding Key="I" Command="{Binding MakeSound}" CommandParameter="5" />
-        <KeyBinding Key="O" Command="{Binding MakeSound}" CommandParameter="6" />
-        <KeyBinding Key="P" Command="{Binding MakeSound}" CommandParameter="7" />
+        <KeyBinding Key="U" Command="{Binding MakeSound}" CommandParameter="5" />
+        <KeyBinding Key="I" Command="{Binding MakeSound}" CommandParameter="6" />
+        <KeyBinding Key="O" Command="{Binding MakeSound}" CommandParameter="7" />
+        <KeyBinding Key="P" Command="{Binding MakeSound}" CommandParameter="8" />
     </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>

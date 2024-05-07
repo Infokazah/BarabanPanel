@@ -336,9 +336,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Command="{Binding CloseCommand}" BorderThickness="0">
+            <Button Grid.Column="0" Command="{Binding CloseCommand}" BorderThickness="0" Margin="20">
                 <Button.Content>
-                    <fa:ImageAwesome Icon="Regular_CaretSquareLeft" Grid.Column="0" Foreground="{StaticResource MainBrushForeground}"/>
+                    <fa:ImageAwesome Icon="Solid_AngleLeft" Grid.Column="0" Foreground="{StaticResource MainBrushForeground}"/>
                 </Button.Content>
             </Button>
             <TextBlock Text="СТАТИСТИКА ОБУЧЕНИЯ" Grid.Column="1" Foreground="{StaticResource MainBrushForeground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="64"/>

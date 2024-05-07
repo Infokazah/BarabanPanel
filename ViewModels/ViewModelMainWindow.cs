@@ -4,12 +4,14 @@ using BarabanPanel.Views;
 using BaseClassesLyb;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
+using NAudio.Wave;
 using Rep_interfases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Media;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using UserStatisticDb;
@@ -94,7 +96,7 @@ namespace BarabanPanel.ViewModels
             }
             set
             {
-                if (value > 0.3 && value < 5)
+                if (value > 0.1 && value < 5)
                     _currentTemp = value;
                 OnPropertyChanged(nameof(CurrentTemp));
             }
@@ -301,19 +303,19 @@ namespace BarabanPanel.ViewModels
 
         #region Комманды
 
-        private SoundPlayer _soundPlayer;
         public CommandBase MakeSound { get; }
         private bool CanMakeSoundExecute(object p) => true;
 
-        private void MakeSoundExecute(object BarabanName)
+        private async void MakeSoundExecute(object BarabanName)
         {
             if (BarabanName is string name)
             {
                 try
                 {
                     string soundPath = Path.Combine(_directory, name + ".wav");
-                    _soundPlayer.Play();
-                    if(_inRitm == true)
+                    Thread soundThread = new Thread(() => PlaySoundAsync(soundPath));
+                    soundThread.Start();
+                    if (_inRitm == true)
                     {
                         if (CurrentMode == "System.Windows.Controls.ComboBoxItem: Повторение мелодии")
                         {
@@ -330,6 +332,24 @@ namespace BarabanPanel.ViewModels
                 {
                     MessageBox.Show("Ошибка воспроизведения звука: " + ex.Message);
                 }
+            }
+        }
+
+        public async Task PlaySoundAsync(string path)
+        {
+            var _waveOut = new WaveOutEvent();
+            try
+            {
+                using (var audioFile = new AudioFileReader(path))
+                {
+                    _waveOut.Init(audioFile);
+                    _waveOut.Play();
+                    await Task.Delay(audioFile.TotalTime);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка воспроизведения звука: " + ex.Message);
             }
         }
 
@@ -375,7 +395,6 @@ namespace BarabanPanel.ViewModels
 
         public ViewModelMainWindow(IJsonReader Reader, UserStatisticViewModel userStat, IRepository<MelStat> melStatRep, IRepository<TempStat> tempRep) 
         {
-            _soundPlayer = new SoundPlayer();
             MakeSound = new RegularCommand(MakeSoundExecute, CanMakeSoundExecute);
             StartCommand = new SimpleCommand(StartExecute, CanStartExecute);
             MelodyRepository = (Repository<MelStat>)melStatRep;
