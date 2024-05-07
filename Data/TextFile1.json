@@ -1,0 +1,228 @@
+﻿[
+  {
+    "Id": "1",
+    "Name": "Melody1",
+    "BarabanParts": [
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.5"
+      },
+      {
+        "BarabanNumber": "1",
+        "BarabanTaiming": "0.3"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.3"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "Melody2",
+    "BarabanParts": [
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.30"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "7",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.30"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "7",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.30"
+      },
+      {
+        "BarabanNumber": "2",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "7",
+        "BarabanTaiming": "0.4"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "Melody3",
+    "BarabanParts": [
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.35"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.15"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.35"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.15"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.35"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.15"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.4"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.35"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.25"
+      },
+      {
+        "BarabanNumber": "6",
+        "BarabanTaiming": "0.15"
+      }
+    ]
+  }
+]
