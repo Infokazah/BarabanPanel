@@ -14,7 +14,6 @@ namespace BarabanPanel.Data.StatisticDb
         var type = Configuration["Type"];
         opt.UseSqlServer(Configuration.GetConnectionString(type));
     }, ServiceLifetime.Scoped) // Здесь устанавливаем жизненный цикл в Scoped
-    .AddTransient<DbInitializer>()
     .AddRepositoriesInDb();
 
     }

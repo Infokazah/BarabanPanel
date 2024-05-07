@@ -376,7 +376,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid Style="{DynamicResource CustomDataGrid}" ItemsSource="{Binding MelStatCollection}" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Visibility="{Binding MelodyVisibility}">
+        <DataGrid Style="{DynamicResource CustomDataGrid}" ItemsSource="{Binding MelStatCollection}" 
+                  AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Visibility="{Binding MelodyVisibility}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Дата"  Width="2*">
                     <DataGridTemplateColumn.CellTemplate>

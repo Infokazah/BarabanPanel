@@ -28,10 +28,7 @@ namespace BarabanPanel
         {
             IsDesignMode = false;
             var host = Host;
-            using (var scope = Services.CreateScope())
-            {
-                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
-            }
+            
             base.OnStartup(e);
             host.StartAsync().ConfigureAwait(false);
         }

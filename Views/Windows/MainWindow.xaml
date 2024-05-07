@@ -574,7 +574,7 @@
                                Height="37" 
                                DockPanel.Dock="Top" Text="№ Барабана"/>
                     <Border Style="{StaticResource StandartBorder}" DockPanel.Dock="Bottom" Margin="5 0 5 5">
-                        <TextBlock Text="{Binding BarabanName}" FontSize="38" Foreground="{StaticResource MainBrushForeground}" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding BarabanName}" FontSize="38" Foreground="{StaticResource MainBrushForeground}" VerticalAlignment="Center" TextAlignment="Center"/>
                     </Border>
                 </DockPanel>
 

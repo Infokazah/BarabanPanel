@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
@@ -151,7 +152,21 @@ namespace BarabanPanel.ViewModels
                         Temp = CurrentTemp,
                         Score = Score
                     };
-                    TempRepository.Add(stat);
+                    var temp = TempRepository.Items.FirstOrDefault(i => i.Temp == stat.Temp);
+                    if(temp != null) 
+                    {
+                        if(temp.Score < stat.Score) 
+                        {
+                            TempRepository.Remove(temp);
+                            TempRepository.Add(stat);
+                            MessageBox.Show("Новый рекорд в данном темпе");
+                        }
+                    }
+                    else
+                    {
+                        TempRepository.Add(stat);
+                        MessageBox.Show("Новый рекорд в данном темпе");
+                    }
                     lastClickTime = DateTime.Now;
                     Score = 0;
                 }
